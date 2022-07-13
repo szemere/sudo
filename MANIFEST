@@ -554,6 +554,10 @@ plugins/sample/sample_plugin.exp
 plugins/sample_approval/Makefile.in
 plugins/sample_approval/sample_approval.c
 plugins/sample_approval/sample_approval.exp
+plugins/http_iolog/Makefile.in
+plugins/http_iolog/README
+plugins/http_iolog/http_iolog.c
+plugins/http_iolog/http_iolog.exp
 plugins/sudoers/Makefile.in
 plugins/sudoers/alias.c
 plugins/sudoers/audit.c

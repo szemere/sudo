@@ -59,6 +59,7 @@ python_version = @PYTHON_VERSION@
 SUBDIRS = lib/util @ZLIB_SRC@ lib/eventlog lib/fuzzstub lib/iolog \
 	  lib/protobuf-c @LOGSRV_SRC@ @LOGSRVD_SRC@ plugins/audit_json \
 	  plugins/group_file plugins/sample_approval plugins/sudoers \
+	  plugins/http_iolog \
 	  plugins/system_group @PYTHON_PLUGIN_SRC@ src include docs examples
 
 SAMPLES = plugins/sample
@@ -214,6 +215,7 @@ depend: siglist.c signame.c
 	    lib/fuzzstub/Makefile.in lib/eventlog/Makefile.in \
 	    lib/iolog/Makefile.in lib/logsrv/Makefile.in logsrvd/Makefile.in \
 	    lib/protobuf-c/Makefile.in plugins/group_file/Makefile.in \
+	    plugins/http_iolog/Makefile.in \
 	    plugins/sample/Makefile.in plugins/sudoers/Makefile.in \
 	    plugins/system_group/Makefile.in plugins/python/Makefile.in \
 	    src/Makefile.in && \
@@ -226,6 +228,7 @@ depend: siglist.c signame.c
 	    --file $(top_builddir)/lib/protobuf-c/Makefile \
 	    --file $(top_builddir)/logsrvd/Makefile \
 	    --file $(top_builddir)/plugins/sample/Makefile \
+	    --file $(top_builddir)/plugins/http_iolog/Makefile \
 	    --file $(top_builddir)/plugins/group_file/Makefile \
 	    --file $(top_builddir)/plugins/sudoers/Makefile \
 	    --file $(top_builddir)/plugins/system_group/Makefile \
