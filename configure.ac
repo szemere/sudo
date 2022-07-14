@@ -3344,6 +3344,12 @@ if test "$DIGEST" = "digest.lo"; then
     fi
 fi
 dnl
+dnl Check for libcurl library
+dnl
+AC_CHECK_LIB(curl, curl_easy_init,  [LIBS="${LIBS} -lcurl"] )
+#AC_SEARCH_LIBS(curl_easy_init, curl, [LIBS="${LIBS} -lcurl"])
+#LIBCURL_CHECK_CONFIG([yes],,[LIBS="${LIBS} -lcurl"], [AC_MSG_ERROR(["libcurl not found"])] )
+dnl
 dnl If socket(2) not in libc, check -lsocket and -linet
 dnl May need to link with *both* -lnsl and -lsocket due to unresolved symbols
 dnl

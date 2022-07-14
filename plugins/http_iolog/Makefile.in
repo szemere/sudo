@@ -42,7 +42,7 @@ INSTALL_BACKUP = @INSTALL_BACKUP@
 
 # Libraries
 LT_LIBS = $(top_builddir)/lib/util/libsudo_util.la
-LIBS = $(LT_LIBS)
+LIBS = $(LT_LIBS) -lcurl
 
 # C preprocessor flags
 CPPFLAGS = -I$(incdir) -I$(top_builddir) @CPPFLAGS@
