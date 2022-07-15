@@ -73,7 +73,8 @@ static int use_sudoedit = false;
 static int
 policy_open(unsigned int version, sudo_conv_t conversation,
     sudo_printf_t sudo_printf, char * const settings[],
-    char * const user_info[], char * const user_env[], char * const args[])
+    char * const user_info[], char * const user_env[], char * const args[],
+    const char **errstr)
 {
     char * const *ui;
     struct passwd *pw;
@@ -294,10 +295,11 @@ find_editor(int nfiles, char * const files[], char **argv_out[])
  * Plugin policy check function.
  * Simple example that prompts for a password, hard-coded to "test".
  */
-static int 
+static int
 policy_check(int argc, char * const argv[],
     char *env_add[], char **command_info_out[],
-    char **argv_out[], char **user_env_out[])
+    char **argv_out[], char **user_env_out[],
+    const char **errstr)
 {
     char *command;
 
@@ -348,7 +350,8 @@ policy_check(int argc, char * const argv[],
 }
 
 static int
-policy_list(int argc, char * const argv[], int verbose, const char *list_user)
+policy_list(int argc, char * const argv[], int verbose, const char *list_user,
+    const char **errstr)
 {
     /*
      * List user's capabilities.
@@ -388,7 +391,8 @@ static int
 io_open(unsigned int version, sudo_conv_t conversation,
     sudo_printf_t sudo_printf, char * const settings[],
     char * const user_info[], char * const command_info[],
-    int argc, char * const argv[], char * const user_env[], char * const args[])
+    int argc, char * const argv[], char * const user_env[], char * const args[],
+    const char **errstr)
 {
     int fd;
     char path[PATH_MAX];
@@ -432,14 +436,14 @@ io_version(int verbose)
 }
 
 static int
-io_log_input(const char *buf, unsigned int len)
+io_log_input(const char *buf, unsigned int len, const char **errstr)
 {
     ignore_result(fwrite(buf, len, 1, input));
     return true;
 }
 
 static int
-io_log_output(const char *buf, unsigned int len)
+io_log_output(const char *buf, unsigned int len, const char **errstr)
 {
     const char *cp, *ep;
     bool ret = true;
