@@ -43,6 +43,7 @@
 #include <limits.h>
 #include <grp.h>
 #include <pwd.h>
+#include <ctype.h>
 
 #include "pathnames.h"
 #include "sudo_compat.h"
